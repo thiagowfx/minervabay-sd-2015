@@ -35,6 +35,10 @@ $(document).ready(function(){
 	        minlength: 2,
 	        required: true
 	      },
+          publisher: {
+            minlength: 2,
+            required: true
+          },
 	      isbn: {
 	      	isbn: true,
 	        required: true
