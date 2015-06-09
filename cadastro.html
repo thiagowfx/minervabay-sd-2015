@@ -7,7 +7,7 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="MinervaBay">
         <meta name="author" content="Felipe Podolan, Heitor Guimarães, Henrique Maio, Thiago Perrotta">
-        <link rel="icon" href="../../favicon.ico">
+        <link rel="icon" href="favicon.ico">
 
         <title>MinervaBay</title>
 
@@ -25,7 +25,12 @@
         <!-- Custom styles for this template -->
         <link href="assets/css/styles.css" rel="stylesheet">
         <script type="text/javascript" >
+
 $(document).ready(function() {
+
+    $('button[type=reset]').click(function() {
+        $("#contact-form").validate().resetForm();
+    });
 
     $.validator.addMethod("isbn",function(value,element)
             {
@@ -50,7 +55,7 @@ $(document).ready(function() {
         <div class="container">
             <div class="jumbotron">
                 <h1>MinervaBay</h1>
-                <p class="lead">You are in the right place. Here you can find the best books entirely free. Just search it below.</p>
+                <p class="lead">You are in the right place. Here you can find out the best books entirely for free. Just search for them below.</p>
                 <div id="custom-search-input">
                     <div class="input-group col-md-12">
                         <input type="text" class="form-control input-lg" placeholder="Title / Author / ISBN" />
@@ -77,7 +82,8 @@ $(document).ready(function() {
                 </div>
             </div>
 
-            <h1>Got any nice book? Share is with us!</h1>
+            <h1>Got any nice book? Share it with us!</h1>
+            <br />
             <form action="" id="contact-form" class="form-horizontal"role="form">
                 <div class="form-group">
                     <label for="Title" class="col-sm-2 control-label">Title</label>
@@ -97,7 +103,7 @@ $(document).ready(function() {
                     <label for="Publisher" class="col-sm-2 control-label">Publisher</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="publisher" id="publisher"
-                                                                              placeholder="Enter the name of the Publisher of the book">
+                                                                                 placeholder="Enter the name of the Publisher of the book">
                     </div>
                 </div>
 
@@ -128,7 +134,7 @@ $(document).ready(function() {
 
             </form>
             <footer class="footer">
-                <p>&copy; UFRJ 2015</p>
+                <p style="text-align: right">Copyright &copy; UFRJ 2015</p>
             </footer>
         </div> <!-- /container -->
     </body>
