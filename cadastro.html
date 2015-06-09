@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Minervateca</title>
+
+    <!-- jQuery -->
+      <script src="assets/js/jquery-2.1.4.min.js"></script>
+     
+    <!-- Validate Plugin -->
+      <script src="assets/js/jquery.validate.min.js"></script>
+      <script src="assets/js/validation.js"></script>
+
+    <!-- Autoomplete Plugin -->  
+    <script type="text/javascript" src="assets/js/jquery.autocomplete.min.js"></script>
+    <script type="text/javascript" src="assets/js/category-autocomplete.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/styles.css" rel="stylesheet">
+    <script type="text/javascript" >
+      $(document).ready(function() {
+      
+      $.validator.addMethod("isbn",function(value,element)
+      {
+      return this.optional(element) || /^(?:ISBN(?:-1[03])?:?\ )?(?=[0-9X]{10}$|(?=(?:[0-9]+[-\ ]){3})[-\ 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[-\ ]){4})[-\ 0-9]{17}$)(?:97[89][-\ ]?)?[0-9]{1,5}[-\ ]?[0-9]+[-\ ]?[0-9]+[-\ ]?[0-9X]$/i.test(value); 
+      },"Wrong ISBN format. Valid formats: ISBN 978-0-596-52068-7 ISBN-13: 978-0-596-52068-7 978 0 596 52068 7 9780596520687 ISBN-10 0-596-52068-9 0-596-52068-9 ");
+
+      $.validator.addMethod("username",function(value,element)
+      {
+      return this.optional(element) || /^[a-zA-Z0-9._-]{3,16}$/i.test(value); 
+      },"Username are 3-15 characters");
+
+      $.validator.addMethod("password",function(value,element)
+      {
+      return this.optional(element) || /^[A-Za-z0-9!@#$%^&*()_]{6,16}$/i.test(value); 
+      },"Passwords are 6-16 characters");
+
+      
+      });
+    </script>
+    
+  </head>
+
+  <body>
+
+    <div class="container">
+      
+
+      <div class="jumbotron">
+        <h1>MinervaBooks</h1>
+        <p class="lead">You are in the right place. Here you can find the best books entirely free. Just search it below.</p>
+        <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" placeholder="Title / Author / ISBN" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                </div>
+        </div>
+      </div>
+
+      
+
+      <div class="row sugestions">
+        <div class="col-md-4">
+          <img src="assets/img/got.jpeg" class="img-responsive" alt="GoT">
+          <p>Game of Thrones</p>
+        </div>
+        <div class="col-md-4">
+          <img src="assets/img/harrypotter.jpg" class="img-responsive" alt="Hp">
+          <p>Harry Potter and the Goblet of Fire</p>
+        </div>
+        <div class="col-md-4">
+          <img src="assets/img/lotr.jpg" class="img-responsive" alt="LoTR">
+          <p>Senhor dos Anéis</p>
+        </div>
+      </div>
+
+      <h1>Got any nice book? Share is with us!</h1>
+      <form action="" id="contact-form" class="form-horizontal"role="form">
+         <div class="form-group">
+            <label for="Title" class="col-sm-2 control-label">Title</label>
+            <div class="controls col-sm-10 ">
+               <input type="text" class="form-control" name="title" id="title" placeholder="Enter the book's title">
+            </div>
+         </div>
+         <div class="form-group">
+            <label for="Author" class="col-sm-2 control-label">Author</label>
+            <div class="col-sm-10">
+               <input type="text" class="form-control" name="author" id="author" 
+                  placeholder="Enter the name of the Author of the book">
+            </div>
+         </div>
+
+         <div class="form-group">
+            <label for="isbn" class="col-sm-2 control-label">Category</label>
+            <div class="col-sm-10">
+               <input type="text" class="form-control" name ="autocomplete" id="autocomplete" 
+                  placeholder="Choose the category of the book">
+            </div>
+         </div>
+
+         <div class="form-group">
+            <label for="isbn" class="col-sm-2 control-label">Isbn</label>
+            <div class="col-sm-10">
+               <input type="text" class="form-control" name ="isbn" id="isbn" 
+                  placeholder="Use the format">
+            </div>
+         </div>
+
+        <div class="form-actions">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-default" formnovalidate name="cancel" value="Cancel">Clear</button>
+          </div>
+        </div>
+            
+      </form>
+      <footer class="footer">
+        <p>&copy; UFRJ 2015</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+  </body>
+</html>
