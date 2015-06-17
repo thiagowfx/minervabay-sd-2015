@@ -12,10 +12,43 @@ $(document).ready(function () {
 //                    <td>123123</td>
 //                </tr>
 
-// messageSubmit
+1 // messageSubmit
 
-function doPopulateTable() {
-    // TODO
+function doPopulateTable(json) {
+    //    TEST:
+    //    json = {
+    //        data: [
+    //            {
+    //                title: "t",
+    //                author: "a",
+    //                publisher: "p",
+    //                autocomplete: "c",
+    //                isbn: "i"
+    //            },
+    //            {
+    //                title: "t2",
+    //                author: "a2",
+    //                publisher: "p2",
+    //                autocomplete: "c2",
+    //                isbn: "i2"
+    //            }
+    //        ]
+    //    };
+
+    clearTable();
+    var tbody = $("#tableSearch>tbody");
+
+    $.each(json.data, function (index, value) {
+        var columns = "";
+        columns += '<td>' + value.title + '</td>';
+        columns += '<td>' + value.author + '</td>';
+        columns += '<td>' + value.publisher + '</td>';
+        columns += '<td>' + value.autocomplete + '</td>';
+        columns += '<td>' + value.isbn + '</td>';
+
+        var row = '<tr>' + columns + '</tr>';
+        tbody.append(row);
+    });
 }
 
 function doButtonSearch() {
@@ -24,6 +57,10 @@ function doButtonSearch() {
 
 function doButtonSubmit() {
     // TODO
+}
+
+function clearTable() {
+    $("#tableSearch>tbody").html('');
 }
 
 function doButtonClearTable() {
