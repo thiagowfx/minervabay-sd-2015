@@ -1,18 +1,7 @@
 $(document).ready(function () {
     $("#buttonSearch").click(doButtonSearch);
-    $("#buttonSubmit").click(doButtonSubmit);
     $("#buttonClearTable").click(doButtonClearTable);
 });
-
-//<tr>
-//                    <td>Romeu</td>
-//                    <td>Julieta</td>
-//                    <td>UFRJ</td>
-//                    <td>Drama</td>
-//                    <td>123123</td>
-//                </tr>
-
-1 // messageSubmit
 
 function doPopulateTable(json) {
     //    TEST:
@@ -56,7 +45,23 @@ function doButtonSearch() {
 }
 
 function doButtonSubmit() {
-    // TODO
+    $.ajax({
+        url: 'rpc',
+        method: 'POST',
+        data: {
+            title: $("#title").val(),
+            author: $("#author").val(),
+            publisher: $("#publisher").val(),
+            autocomplete: $("#autocomplete").val(),
+            isbn: $("#isbn").val()
+        },
+        success: function (data, status, jqxhr) {
+            $("#messageSubmit").html('Dados submetidos com sucesso.');
+        },
+        error: function () {
+            $("#messageSubmit").html('Ocorreu um erro na submissão dos dados.');
+        }
+    });
 }
 
 function clearTable() {
@@ -66,3 +71,72 @@ function clearTable() {
 function doButtonClearTable() {
     $("#tableSearch>tbody").html('<tr class="no-records-found"><td colspan="5">No matching records found</td></tr>');
 }
+
+
+//////////////////////// THIRD-PARTY CODE ////////////////////////////////
+
+$(document).ready(function () {
+    /* 
+     * Validate
+     * http://bassistance.de/jquery-plugins/jquery-plugin-validation/
+     * http://docs.jquery.com/Plugins/Validation/
+     * http://docs.jquery.com/Plugins/Validation/validate#toptions
+     */
+
+    $('#contact-form').validate({
+        rules: {
+            title: {
+                minlength: 2,
+                required: true
+            },
+            autocomplete: {
+                required: true
+            },
+            password: {
+                required: true,
+                password: true
+            },
+            publisher: {
+                minlength: 2,
+                required: true
+            },
+            username: {
+                minlength: 2,
+                username: true,
+                required: true
+            },
+            author: {
+                minlength: 2,
+                required: true
+            },
+            isbn: {
+                isbn: true,
+                required: true
+            },
+            name: {
+                minlength: 2,
+                required: true
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            subject: {
+                minlength: 2,
+                required: true
+            },
+            message: {
+                minlength: 2,
+                required: true
+            }
+        },
+        submitHandler: doButtonSubmit,
+        highlight: function (element) {
+            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        success: function (element) {
+            element.text('OK!').addClass('valid').closest('.form-group').removeClass('has-error').addClass('has-success');
+        }
+    });
+
+});
