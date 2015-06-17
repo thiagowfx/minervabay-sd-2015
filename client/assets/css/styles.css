@@ -207,3 +207,21 @@ body {
 #table-search-input .glyphicon-search{
     font-size: 20px;
 }
+
+.clickLibrary{
+  display: inline-block;
+  margin-top: 40px;
+  text-align: center;
+  padding: 25px;
+  box-shadow: none;
+  border: 0px;
+}
+
+.clickLibrary h2{
+  margin: auto;
+}
+
+.glyphicon-book{
+  padding-right: 20px;
+
+}
