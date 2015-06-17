@@ -1,8 +1,8 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-import cherrypy
 import os
+import cherrypy
 
 WEB_DIR = 'client'
 
