@@ -18,3 +18,4 @@ config = {
 
 print "Starting cherrypy server..."
 cherrypy.quickstart(Root(), '/', config=config)
+print "Cont"
