@@ -7,14 +7,14 @@ import os
 class Root(object):
     @cherrypy.expose
     def index(self):
-        return open('cadastro.html')
+        return open('index.html')
 
-if '__name__' == '__main__':
-
-    conf = {
-            '/': {
-                'tools.staticdir.on': True,
-                'tools.staticdir.dir': os.path.dirname(os.path.abspath(__file__))
-                }
+config = {
+        '/': {
+            'tools.staticdir.on': True,
+            'tools.staticdir.dir': os.path.dirname(os.path.abspath(__file__))
             }
-    cherrypy.quickstart(Root(), '/', config=conf)
+        }
+
+print "Starting cherrypy server..."
+cherrypy.quickstart(Root(), '/', config=config)
