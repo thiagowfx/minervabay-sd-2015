@@ -45,23 +45,38 @@ function doButtonSearch() {
 }
 
 function doButtonSubmit() {
-    $.ajax({
-        url: 'rpc',
-        method: 'POST',
-        data: {
-            title: $("#title").val(),
-            author: $("#author").val(),
-            publisher: $("#publisher").val(),
-            autocomplete: $("#autocomplete").val(),
-            isbn: $("#isbn").val()
-        },
-        success: function (data, status, jqxhr) {
+    console.log("doButtonSubmit");
+
+    var data = {
+        "jsonrpc": "2.0",
+        "id": "",
+        "method": "addBook",
+        "params": [
+            {
+                title: $("#title").val(),
+                author: $("#author").val(),
+                publisher: $("#publisher").val(),
+                autocomplete: $("#autocomplete").val(),
+                isbn: $("#isbn").val()
+            }
+        ]
+    };
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://localhost:8081');
+
+    xhr.onload = function () {
+        if (xhr.status === 200) {
             $("#messageSubmit").html('Dados submetidos com sucesso.');
-        },
-        error: function () {
+            console.log("====== data:");
+            console.log(data);
+            // TODO: reset form
+        } else {
             $("#messageSubmit").html('Ocorreu um erro na submissão dos dados.');
         }
-    });
+    };
+
+    xhr.send(JSON.stringify(data));
 }
 
 function clearTable() {
@@ -130,7 +145,9 @@ $(document).ready(function () {
                 required: true
             }
         },
-        submitHandler: doButtonSubmit,
+        submitHandler: function (form) {
+            doButtonSubmit();
+        },
         highlight: function (element) {
             $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
         },
