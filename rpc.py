@@ -4,8 +4,7 @@
 import cherrypy
 import json
 from pyjsonrpc.cp import CherryPyJsonRpc, rpcmethod
-
-import database
+from database import books_database
 
 PORT = 8081
 
@@ -13,11 +12,11 @@ class Root(CherryPyJsonRpc):
 
     @rpcmethod
     def addBook(self, book):
-        return database.add_book_to_database(book)
+        return books_database.add_book_to_database(book)
 
     @rpcmethod
     def searchBook(self, query):
-        return database.search_book_in_database(query)
+        return books_database.search_book_in_database(query)
 
     index = CherryPyJsonRpc.request_handler
 

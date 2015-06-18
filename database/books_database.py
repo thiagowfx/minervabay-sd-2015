@@ -1,12 +1,7 @@
-#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import sessionmaker
-
-Base = declarative_base()
+from . import (Base, engine, Session)
 
 class Book(Base):
     __tablename__ = 'books'
@@ -29,12 +24,9 @@ def add_book_to_database(book):
     category = book["autocomplete"]
     isbn = book["isbn"]
 
-    # create an instance of Book
     book_instance = Book(title = title, author = author, publisher = publisher, category = category, isbn = isbn)
 
-    engine = create_engine('sqlite:///books.db', echo=True)
     Base.metadata.create_all(engine)
-    Session = sessionmaker(bind=engine)
     session = Session()
     session.add(book_instance)
     session.commit()
