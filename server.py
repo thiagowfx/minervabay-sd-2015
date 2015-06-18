@@ -19,4 +19,4 @@ config = {
         }
 
 print "Starting CherryPy server..."
-cherrypy.quickstart(Root(), '/', config=config)
+cherrypy.quickstart(Root(), '/', config = config)

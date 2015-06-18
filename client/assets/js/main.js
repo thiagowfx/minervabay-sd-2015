@@ -49,7 +49,7 @@ function doButtonSubmit() {
 
     var data = {
         "jsonrpc": "2.0",
-        "id": "",
+        "id": "1",
         "method": "addBook",
         "params": [
             {
@@ -66,10 +66,10 @@ function doButtonSubmit() {
     xhr.open('POST', 'http://localhost:8081');
 
     xhr.onload = function () {
-        if (xhr.status === 200) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
             $("#messageSubmit").html('Dados submetidos com sucesso.');
-            console.log("====== data:");
-            console.log(data);
+            console.log("====== xhr.responseText:");
+            console.log(xhr.responseText);
             // TODO: reset form
         } else {
             $("#messageSubmit").html('Ocorreu um erro na submissão dos dados.');
