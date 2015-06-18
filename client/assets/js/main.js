@@ -12,7 +12,7 @@ function doPopulateTable(json) {
         columns += '<td>' + value.title + '</td>';
         columns += '<td>' + value.author + '</td>';
         columns += '<td>' + value.publisher + '</td>';
-        columns += '<td>' + value.autocomplete + '</td>';
+        columns += '<td>' + value.category + '</td>';
         columns += '<td>' + value.isbn + '</td>';
 
         var row = '<tr>' + columns + '</tr>';
@@ -57,7 +57,7 @@ function doButtonSubmit() {
                 title: $("#title").val(),
                 author: $("#author").val(),
                 publisher: $("#publisher").val(),
-                autocomplete: $("#autocomplete").val(),
+                category: $("#autocomplete").val(),
                 isbn: $("#isbn").val()
             }
         ]

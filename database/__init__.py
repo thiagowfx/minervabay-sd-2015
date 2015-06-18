@@ -19,6 +19,15 @@ class Book(Base):
     category = Column(String)
     isbn = Column(String)
 
+    def to_dict(self):
+        return {
+                "title": self.title,
+                "author": self.author,
+                "publisher": self.publisher,
+                "category": self.category,
+                "isbn": self.isbn
+                }
+
     def __repr__(self):
         return "<Book(title='%s', author='%s', publisher='%s', category='%s', isbn='%s')>" % (self.title, self.author, self.publisher, self.category, self.isbn)
 
