@@ -14,12 +14,26 @@ def add_book_to_database(book):
     category = book["autocomplete"]
     isbn = book["isbn"]
 
-    # TODO: store those things in the database / ORM
+    # TODO: store those things in the database / ORM.
+    # Return False if there is some error with the data.
 
     return True
 
 def search_book_in_database(query):
-    pass
+    books = []
+
+    # TODO: process query and append matched results to books list
+
+    books.append({
+        "title": "t",
+        "author": "a",
+        "publisher": "p",
+        "autocomplete": "c",
+        "isbn": "i"
+        })
+
+    json_response = {"data": books}
+    return json_response
 
 class Root(CherryPyJsonRpc):
 

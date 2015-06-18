@@ -4,26 +4,6 @@ $(document).ready(function () {
 });
 
 function doPopulateTable(json) {
-    //    TEST:
-    //    json = {
-    //        data: [
-    //            {
-    //                title: "t",
-    //                author: "a",
-    //                publisher: "p",
-    //                autocomplete: "c",
-    //                isbn: "i"
-    //            },
-    //            {
-    //                title: "t2",
-    //                author: "a2",
-    //                publisher: "p2",
-    //                autocomplete: "c2",
-    //                isbn: "i2"
-    //            }
-    //        ]
-    //    };
-
     clearTable();
     var tbody = $("#tableSearch>tbody");
 
@@ -41,7 +21,27 @@ function doPopulateTable(json) {
 }
 
 function doButtonSearch() {
-    // TODO
+    var data = {
+        "jsonrpc": "2.0",
+        "id": "1",
+        "method": "searchBook",
+        "params": [
+            {}
+        ]
+    };
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://localhost:8081');
+
+    xhr.onload = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            doPopulateTable(JSON.parse(xhr.responseText).result);
+        } else {
+            window.alert("Error while trying to search for books in the database.")
+        }
+    };
+
+    xhr.send(JSON.stringify(data));
 }
 
 function doButtonSubmit() {
@@ -88,7 +88,6 @@ function doButtonClearTable() {
     $("#tableSearch>tbody").html('<tr class="no-records-found"><td colspan="5">No matching records found</td></tr>');
 }
 
-
 //////////////////////// THIRD-PARTY CODE ////////////////////////////////
 
 $(document).ready(function () {
@@ -98,7 +97,6 @@ $(document).ready(function () {
      * http://docs.jquery.com/Plugins/Validation/
      * http://docs.jquery.com/Plugins/Validation/validate#toptions
      */
-
     $('#contact-form').validate({
         rules: {
             title: {
@@ -156,5 +154,4 @@ $(document).ready(function () {
             element.text('OK!').addClass('valid').closest('.form-group').removeClass('has-error').addClass('has-success');
         }
     });
-
 });
