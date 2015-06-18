@@ -70,7 +70,7 @@ function doButtonSubmit() {
             $("#messageSubmit").html('Dados submetidos com sucesso.');
             console.log("====== xhr.responseText:");
             console.log(xhr.responseText);
-            // TODO: reset form
+            $("#contact-form button[type=reset]").click();
         } else {
             $("#messageSubmit").html('Ocorreu um erro na submissão dos dados.');
         }
