@@ -45,8 +45,6 @@ function doButtonSearch() {
 }
 
 function doButtonSubmit() {
-    console.log("doButtonSubmit");
-
     var data = {
         "jsonrpc": "2.0",
         "id": "1",
@@ -67,10 +65,13 @@ function doButtonSubmit() {
 
     xhr.onload = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            $("#messageSubmit").html('Dados submetidos com sucesso.');
-            console.log("====== xhr.responseText:");
-            console.log(xhr.responseText);
-            $("#contact-form button[type=reset]").click();
+            var response = JSON.parse(xhr.responseText);
+            if (response.result) {
+                $("#messageSubmit").html('Dados submetidos com sucesso.');
+                $("#contact-form button[type=reset]").click();
+            } else {
+                $("#messageSubmit").html('Erro ao adicionar o novo registro.');
+            }
         } else {
             $("#messageSubmit").html('Ocorreu um erro na submissão dos dados.');
         }

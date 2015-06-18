@@ -18,11 +18,18 @@ def add_book_to_database(book):
 
     return True
 
+def search_book_in_database(query):
+    pass
+
 class Root(CherryPyJsonRpc):
 
     @rpcmethod
     def addBook(self, book):
         return add_book_to_database(book)
+
+    @rpcmethod
+    def searchBook(self, query):
+        return search_book_in_database(query)
 
     index = CherryPyJsonRpc.request_handler
 
