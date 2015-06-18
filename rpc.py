@@ -21,10 +21,12 @@ def add_book_to_database(book):
 
 def search_book_in_database(query):
     search_string = query["search_string"]
+    search_criteria = query["search_criteria"]
 
     books = []
 
     # TODO: process query and append matched results to books list
+    # Do accordingly to the below example:
 
     books.append({
         "title": "t",

@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- TODO: magnet link -->
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -150,8 +148,16 @@
                         <button class="btn" type="button" id="buttonClearTable">
                             <i class="glyphicon glyphicon-trash"></i>
                         </button>
+                    </span>
                 </div>
             </div>
+            <select id="idSelectSearch" class="form-control">
+                <option value="title">Title</option>
+                <option value="author">Author</option>
+                <option value="publisher">Publisher</option>
+                <option value="category">Category</option>
+                <option value="isbn">ISBN</option>
+            </select>
         </div>
 
         <table id="tableSearch" data-toggle="table">

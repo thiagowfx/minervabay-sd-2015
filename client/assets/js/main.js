@@ -27,7 +27,8 @@ function doButtonSearch() {
         "method": "searchBook",
         "params": [
             {
-                "search_string": $("#idSearchTitle").val()
+                "search_string": $("#idSearchTitle").val(),
+                "search_criteria": $('#idSelectSearch :selected').val()
             }
         ]
     };
