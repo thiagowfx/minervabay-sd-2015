@@ -20,6 +20,8 @@ def add_book_to_database(book):
     return True
 
 def search_book_in_database(query):
+    search_string = query["search_string"]
+
     books = []
 
     # TODO: process query and append matched results to books list
