@@ -18,5 +18,5 @@ config = {
             }
         }
 
-print "Starting CherryPy server..."
+print "Starting Web server..."
 cherrypy.quickstart(Root(), '/', config = config)
