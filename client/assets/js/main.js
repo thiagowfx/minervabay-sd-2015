@@ -88,6 +88,7 @@ function clearTable() {
 }
 
 function doButtonClearTable() {
+    $("#idSearchTitle").val('');
     $("#tableSearch>tbody").html('<tr class="no-records-found"><td colspan="5">No matching records found</td></tr>');
 }
 
