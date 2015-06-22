@@ -1,4 +1,4 @@
-var RPC_SERVER = 'localhost:8081';
+var RPC_SERVER = 'http://localhost:8081';
 
 $(document).ready(function () {
     $("#buttonSearch").click(doButtonSearch);
