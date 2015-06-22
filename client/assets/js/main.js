@@ -1,3 +1,5 @@
+var RPC_SERVER = 'http://sdufrj-thiagoperrotta.rhcloud.com';
+
 $(document).ready(function () {
     $("#buttonSearch").click(doButtonSearch);
     $("#buttonClearTable").click(doButtonClearTable);
@@ -42,7 +44,7 @@ function doButtonSearch() {
     };
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:8081');
+    xhr.open('POST', RPC_SERVER);
 
     xhr.onload = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -73,7 +75,7 @@ function doButtonSubmit() {
     };
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:8081');
+    xhr.open('POST', RPC_SERVER);
 
     xhr.onload = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -114,7 +116,7 @@ function doButtonDelete(id) {
     };
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:8081');
+    xhr.open('POST', RPC_SERVER);
 
     xhr.onload = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
