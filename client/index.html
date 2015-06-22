@@ -28,22 +28,16 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $.validator.addMethod("isbn",
-                function (value, element) {
-                    return this.optional(element) || /^(?:ISBN(?:-1[03])?:?\ )?(?=[0-9X]{10}$|(?=(?:[0-9]+[-\ ]){3})[-\ 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[-\ ]){4})[-\ 0-9]{17}$)(?:97[89][-\ ]?)?[0-9]{1,5}[-\ ]?[0-9]+[-\ ]?[0-9]+[-\ ]?[0-9X]$/i.test(value);
-                },
-                "Wrong ISBN format. Valid ones: ISBN 978-0-596-52068-7 ISBN-13: 978-0-596-52068-7 978 0 596 52068 7 9780596520687 ISBN-10 0-596-52068-9 0-596-52068-9 ");
+                    function (value, element) {
+                        return this.optional(element) || /^(?:ISBN(?:-1[03])?:?\ )?(?=[0-9X]{10}$|(?=(?:[0-9]+[-\ ]){3})[-\ 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[-\ ]){4})[-\ 0-9]{17}$)(?:97[89][-\ ]?)?[0-9]{1,5}[-\ ]?[0-9]+[-\ ]?[0-9]+[-\ ]?[0-9X]$/i.test(value);
+                    },
+                    "Wrong ISBN format. Valid ones: ISBN 978-0-596-52068-7 ISBN-13: 978-0-596-52068-7 978 0 596 52068 7 9780596520687 ISBN-10 0-596-52068-9 0-596-52068-9 ");
 
-            $.validator.addMethod("username",
-                function (value, element) {
-                    return this.optional(element) || /^[a-zA-Z0-9._-]{3,16}$/i.test(value);
-                },
-                "Username are 3-15 characters");
-
-            $.validator.addMethod("password",
-                function (value, element) {
-                    return this.optional(element) || /^[A-Za-z0-9!@#$%^&*()_]{6,16}$/i.test(value);
-                },
-                "Passwords are 6-16 characters");
+            $.validator.addMethod("magnetlink",
+                    function (value, element) {
+                        return this.optional(element) || /^magnet:\?/i.test(value);
+                    },
+                    "Magnet Link Should be of the form magnet?");
         });
     </script>
 </head>
