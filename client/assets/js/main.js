@@ -1,4 +1,4 @@
-var RPC_SERVER = 'http://localhost:8080/';
+var RPC_SERVER = 'http://polar-everglades-2947.herokuapp.com/';
 
 $(document).ready(function () {
     $("#buttonSearch").click(doButtonSearch);
@@ -44,7 +44,7 @@ function doButtonSearch() {
     };
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:8081');
+    xhr.open('POST', RPC_SERVER);
 
     xhr.onload = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -75,7 +75,7 @@ function doButtonSubmit() {
     };
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:8081');
+    xhr.open('POST', RPC_SERVER);
 
     xhr.onload = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -116,7 +116,7 @@ function doButtonDelete(id) {
     };
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:8081');
+    xhr.open('POST', RPC_SERVER);
 
     xhr.onload = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {

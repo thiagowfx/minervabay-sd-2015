@@ -47,6 +47,9 @@ config = {
             },
         }
 
+cherrypy.config.update({'server.socket_host': '0.0.0.0',})
+cherrypy.config.update({'server.socket_port': int(os.environ.get('PORT', '8080')),})
+
 print "Starting CherryPy server..."
 cherrypy.tools.CORS = cherrypy.Tool('before_handler', CORS)
 root = SdRpc()
