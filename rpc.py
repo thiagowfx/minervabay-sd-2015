@@ -35,4 +35,5 @@ cherrypy.config.update({
 print "Starting RPC server ..."
 print "URL: http://localhost:" + str(PORT)
 cherrypy.tools.CORS = cherrypy.Tool('before_handler', CORS)
+cherrypy.config.update({'server.socket_host': '0.0.0.0',})
 cherrypy.quickstart(Root())

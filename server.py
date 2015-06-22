@@ -19,4 +19,6 @@ config = {
         }
 
 print "Starting Web server..."
+cherrypy.config.update({'server.socket_host': '0.0.0.0',})
+cherrypy.config.update({'server.socket_port': int(os.environ.get('PORT', '8080')),})
 cherrypy.quickstart(Root(), '/', config = config)
