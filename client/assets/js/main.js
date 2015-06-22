@@ -14,8 +14,8 @@ function doPopulateTable(json) {
         columns += '<td>' + value.publisher + '</td>';
         columns += '<td>' + value.category + '</td>';
         columns += '<td>' + value.isbn + '</td>';
-        columns += '<td><input type="image" src="assets/img/delete.png" width="50%" height="50%" onclick="doButtonDelete(' + parseInt(value.id, 10) + ')"></td>';
-        columns += '<td><a href=' + value.magnetlink + '><img src="assets/img/magnet.png" width="20%" height="20%"></a> </td>';
+        columns += '<td><input type="image" src="assets/img/delete.png" width="30px" height="30px" onclick="doButtonDelete(' + parseInt(value.id, 10) + ')"></td>';
+        columns += '<td><a href=' + value.magnetlink + '><img src="assets/img/magnet.png" width="30px" height="30px"></a> </td>';
 
         var row = '<tr id="row' + value.id + '">' + columns + '</tr>';
         tbody.append(row);
