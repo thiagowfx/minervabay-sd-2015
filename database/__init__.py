@@ -21,6 +21,7 @@ class Book(Base):
 
     def to_dict(self):
         return {
+                "id": self.id,
                 "title": self.title,
                 "author": self.author,
                 "publisher": self.publisher,
@@ -29,7 +30,7 @@ class Book(Base):
                 }
 
     def __repr__(self):
-        return "<Book(title='%s', author='%s', publisher='%s', category='%s', isbn='%s')>" % (self.title, self.author, self.publisher, self.category, self.isbn)
+        return "<Book(id='%d',title='%s', author='%s', publisher='%s', category='%s', isbn='%s')>" % (self.id, self.title, self.author, self.publisher, self.category, self.isbn)
 
 engine = create_engine('sqlite:///' + DATABASE_FILE, echo=True)
 Session = sessionmaker(bind=engine)

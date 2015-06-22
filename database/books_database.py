@@ -33,3 +33,13 @@ def search_book_in_database(query):
 
     json_response = {"data": books}
     return json_response
+
+def delete_book_from_database(book):
+    id = book["id"]
+
+    session = Session()
+    book1 = session.query(Book).filter_by(id=id).first()
+    session.delete(book1)
+    session.commit()
+
+    return True
