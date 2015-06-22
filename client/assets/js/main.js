@@ -14,8 +14,9 @@ function doPopulateTable(json) {
         columns += '<td>' + value.publisher + '</td>';
         columns += '<td>' + value.category + '</td>';
         columns += '<td>' + value.isbn + '</td>';
+        columns += '<td><input type="image" src="assets/img/delete.png" width="13%" height="13%" onclick="doButtonDelete(' + parseInt(value.id, 10) + ')"></td>';
 
-        var row = '<tr>' + columns + '</tr>';
+        var row = '<tr id="row' + value.id + '">' + columns + '</tr>';
         tbody.append(row);
     });
 }
@@ -40,7 +41,7 @@ function doButtonSearch() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             doPopulateTable(JSON.parse(xhr.responseText).result);
         } else {
-            window.alert("Error while trying to search for books in the database.")
+            window.alert("Ocorreu um erro ao tentar procurar livros no banco de dados.");
         }
     };
 
@@ -92,10 +93,43 @@ function doButtonClearTable() {
     $("#tableSearch>tbody").html('<tr class="no-records-found"><td colspan="5">No matching records found</td></tr>');
 }
 
+function doButtonDelete(id) {
+    var data = {
+        "jsonrpc": "2.0",
+        "id": "1",
+        "method": "deleteBook",
+        "params": [
+            {
+                "id": parseInt(id, 10)
+            }
+        ]
+    };
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://localhost:8081');
+
+    xhr.onload = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            if (response.result) {
+                window.alert("Registro deletado com sucesso do banco de dados.");
+                $("#row" + id).remove();
+            } else {
+                window.alert("Ocorreu um erro ao tentar deletar o livro do banco de dados.");
+            }
+        } else {
+            window.alert("Ocorreu um erro ao tentar se comunicar com o banco de dados para deletar o livro.");
+        }
+    };
+
+    xhr.send(JSON.stringify(data));
+}
+
+
 //////////////////////// THIRD-PARTY CODE ////////////////////////////////
 
 $(document).ready(function () {
-    /* 
+    /*
      * Validate
      * http://bassistance.de/jquery-plugins/jquery-plugin-validation/
      * http://docs.jquery.com/Plugins/Validation/

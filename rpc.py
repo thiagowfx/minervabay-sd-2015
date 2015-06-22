@@ -18,6 +18,10 @@ class Root(CherryPyJsonRpc):
     def searchBook(self, query):
         return books_database.search_book_in_database(query)
 
+    @rpcmethod
+    def deleteBook(self, book):
+        return books_database.delete_book_from_database(book)
+
     index = CherryPyJsonRpc.request_handler
 
 def CORS():
