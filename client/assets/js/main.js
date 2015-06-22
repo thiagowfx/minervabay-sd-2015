@@ -146,17 +146,8 @@ $(document).ready(function () {
             autocomplete: {
                 required: true
             },
-            password: {
-                required: true,
-                password: true
-            },
             publisher: {
                 minlength: 2,
-                required: true
-            },
-            username: {
-                minlength: 2,
-                username: true,
                 required: true
             },
             author: {
@@ -167,21 +158,9 @@ $(document).ready(function () {
                 isbn: true,
                 required: true
             },
-            name: {
-                minlength: 2,
-                required: true
-            },
-            email: {
-                required: true,
-                email: true
-            },
-            subject: {
-                minlength: 2,
-                required: true
-            },
-            message: {
-                minlength: 2,
-                required: true
+            magnetlink: {
+                magnetlink: true,
+                required: false
             }
         },
         submitHandler: function (form) {
