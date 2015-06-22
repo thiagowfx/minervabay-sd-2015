@@ -11,8 +11,9 @@ def add_book_to_database(book):
     publisher = book["publisher"]
     category = book["category"]
     isbn = book["isbn"]
+    magnetlink = book["magnetlink"]
 
-    book_instance = Book(title = title, author = author, publisher = publisher, category = category, isbn = isbn)
+    book_instance = Book(title = title, author = author, publisher = publisher, category = category, isbn = isbn, magnetlink = magnetlink)
 
     session = Session()
     session.add(book_instance)

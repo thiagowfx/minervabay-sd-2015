@@ -14,7 +14,14 @@ function doPopulateTable(json) {
         columns += '<td>' + value.publisher + '</td>';
         columns += '<td>' + value.category + '</td>';
         columns += '<td>' + value.isbn + '</td>';
-        columns += '<td><input type="image" src="assets/img/delete.png" width="13%" height="13%" onclick="doButtonDelete(' + parseInt(value.id, 10) + ')"></td>';
+        columns += '<td><input type="image" src="assets/img/delete.png" width="30px" height="30px" onclick="doButtonDelete(' + parseInt(value.id, 10) + ')"></td>';
+
+        if(value.magnetlink === undefined || value.magnetlink === '') {
+            columns += '<td></td>'
+        }
+        else {
+            columns += '<td><a href=' + value.magnetlink + '><img src="assets/img/magnet.png" width="30px" height="30px"></a> </td>';
+        }
 
         var row = '<tr id="row' + value.id + '">' + columns + '</tr>';
         tbody.append(row);
@@ -59,7 +66,8 @@ function doButtonSubmit() {
                 author: $("#author").val(),
                 publisher: $("#publisher").val(),
                 category: $("#autocomplete").val(),
-                isbn: $("#isbn").val()
+                isbn: $("#isbn").val(),
+                magnetlink: $("#magnetlink").val()
             }
         ]
     };
@@ -144,17 +152,8 @@ $(document).ready(function () {
             autocomplete: {
                 required: true
             },
-            password: {
-                required: true,
-                password: true
-            },
             publisher: {
                 minlength: 2,
-                required: true
-            },
-            username: {
-                minlength: 2,
-                username: true,
                 required: true
             },
             author: {
@@ -165,21 +164,9 @@ $(document).ready(function () {
                 isbn: true,
                 required: true
             },
-            name: {
-                minlength: 2,
-                required: true
-            },
-            email: {
-                required: true,
-                email: true
-            },
-            subject: {
-                minlength: 2,
-                required: true
-            },
-            message: {
-                minlength: 2,
-                required: true
+            magnetlink: {
+                magnetlink: true,
+                required: false
             }
         },
         submitHandler: function (form) {
