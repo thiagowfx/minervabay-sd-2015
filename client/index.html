@@ -26,6 +26,13 @@
     <script type="text/javascript" src="assets/js/main.js"></script>
 
     <script type="text/javascript">
+	function FormReset(){
+ 	console.log("Resetado");
+ 		$("#contact-form").validate().resetForm();
+ 	 	$('.form-group').removeClass('has-error has-feedback has-success');
+ 	};
+    </script>
+    <script type="text/javascript">
         $(document).ready(function () {
             $.validator.addMethod("isbn",
                 function (value, element) {
@@ -76,7 +83,7 @@
 
         <h1>Got any nice book? Share it with us!</h1>
         <br />
-        <form id="contact-form" class="form-horizontal" role="form">
+        <form id="contact-form" class="form-horizontal" role="form" onreset="FormReset()">
             <div class="form-group">
                 <label for="Title" class="col-sm-2 control-label">Title</label>
                 <div class="controls col-sm-10 ">
