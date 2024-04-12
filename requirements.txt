@@ -2,5 +2,5 @@ bunch==1.0.1
 CherryPy==3.7.0
 python-jsonrpc==0.7.7
 SQLAlchemy==1.0.5
-wheel==0.24.0
+wheel==0.38.1
 honcho==0.6.6
